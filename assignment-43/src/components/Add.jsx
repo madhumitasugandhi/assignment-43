@@ -3,6 +3,7 @@ import './Add.css'
 import HomeBtn from './HomeBtn/HomeBtn'
 import { useState } from 'react'
 import EmojiPicker from 'emoji-picker-react';
+import { Toaster } from 'react-hot-toast';
 
 function Add() {
   const [title, setTitle] = useState("");
@@ -12,6 +13,22 @@ function Add() {
   const [emoji, setEmoji] = useState("");
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
 
+  const addNote = () => {
+    const notes = JSON.parse(localStorage.getItem("notes")) || [];
+    const newNote = {
+      title,
+      description,
+      category,
+      priority,
+      emoji,
+    };
+
+    notes.push(newNote);
+
+    localStorage.setItem("notes", JSON.stringify(notes));
+
+    Toaster.success("Note added successfully!");
+  };
   return (
     <div className=' subtitle text-primary'>
       <p>Add Note</p>
@@ -42,7 +59,7 @@ function Add() {
         setEmoji(e.target.value);
         }} 
         />
-      <button type='button' className=' btn btn-primary' onClick={() => { setShowEmojiPicker(!showEmojiPicker); }}>
+      <button type='button' className=' btn btn-primary btn-select' onClick={() => { setShowEmojiPicker(!showEmojiPicker); }}>
         {showEmojiPicker ? "Close" : "Open "}Emoji Picker
         
       </button>
@@ -58,7 +75,7 @@ function Add() {
           setShowEmojiPicker(false);
         }}
       />
-
+  <br/>
       <select value={category} onChange={(e) => { setCategory(e.target.value); }}>
         <option value="shopping">Shopping</option>
         <option value="work">Work</option>
@@ -77,7 +94,13 @@ function Add() {
       />
       <br />
 
-      <button type='button' className='btn btn-primary' onClick={() => { setTitle(""); }}>Clear</button>
+      <button type='button' className='btn btn-primary' onClick={() => { setTitle(""), setDescription(""), setEmoji(""), setPriority(""), setShowEmojiPicker(""); }}>Clear</button>
+
+
+      <button type='button' className='btn btn-primary' onClick={addNote}>
+         + Add 
+
+      </button>
     </div>
 
 
