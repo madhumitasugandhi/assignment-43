@@ -1,0 +1,21 @@
+body{
+    background-color: #ECDFCC;
+    font-family: 'Courier New', Courier, monospace;
+    
+    text-align: center;
+}
+.title{
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+}
+.text-primary{
+    color: #1E201E;
+    font-size: 3rem;
+    margin-top: 20px;
+}
+.text-secondary{
+    color: #3C3D37;
+    font-size: 1.3rem;
+    margin-top: 20px;
+}
