@@ -1,7 +1,8 @@
 body{
+    margin: 0;
+    padding: 0;
     background-color: #ECDFCC;
-    font-family: 'Courier New', Courier, monospace;
-    
+    font-family: 'Courier New', Courier, monospace;  
     text-align: center;
 }
 .title{

@@ -1,10 +1,16 @@
 import React from 'react'
 import './Home.css'
-import ImgSecure from '../components/shield.png'
-import ImgUI from '../components/ui.png'
-import ImgLike from '../components/thumb-up.png'
-import ImgBrain from '../components/brain-organ.png'
 import { Link } from 'react-router-dom'
+import ImgSecure from '../assets/shield.png'
+import ImgUI from '../assets/ui.png'
+import ImgLike from '../assets/thumb-up.png'  
+import ImgBrain from '../assets/brain.png'
+
+/*import ImgSecure from './assets/secure.png'
+import ImgUI from '../assets/ui.png'
+import ImgLike from '../assets/like.png'
+import ImgBrain from '../assets/brain.png'
+*/
 
 const Home = () => {
   return (
