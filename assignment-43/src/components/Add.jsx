@@ -3,13 +3,13 @@ import './Add.css'
 import HomeBtn from './HomeBtn/HomeBtn'
 import { useState } from 'react'
 import EmojiPicker from 'emoji-picker-react';
-import { Toaster } from 'react-hot-toast';
+import { Toaster} from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 
 function Add() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
-  const [priority, setPriority] = useState("");
   const [emoji, setEmoji] = useState("");
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
 
@@ -19,19 +19,17 @@ function Add() {
       title,
       description,
       category,
-      priority,
       emoji,
     };
 
     notes.push(newNote);
 
     localStorage.setItem("notes", JSON.stringify(notes));
-
-    Toaster.success("Note added successfully!");
+Toaster.success("Note added successfully");
   };
   return (
     <div className=' subtitle text-primary'>
-      <p>Add Note</p>
+      <p>Add Note:</p>
       <HomeBtn />
       <input type="text"
         placeholder='Title'
@@ -83,23 +81,25 @@ function Add() {
         <option value="study">Study</option>
       </select>
 
-      <input type="text"
-        placeholder='Priority'
-        className='input'
-        value={priority}
-        onChange={(e) => {
-          setPriority(e.target.value);
-          console.log(e.target.value);
-        }}
-      />
+
       <br />
 
-      <button type='button' className='btn btn-primary' onClick={() => { setTitle(""), setDescription(""), setEmoji(""), setPriority(""), setShowEmojiPicker(""); }}>Clear</button>
+      <button type='button' className='btn btn-primary' onClick={() => { 
+        setTitle(""),
+        setDescription(""),
+        setEmoji(""),
+        setShowEmojiPicker("");
+         }}>Clear</button>
 
 
-      <button type='button' className='btn btn-primary' onClick={addNote}>
+      <button type='button' className='btn btn-primary' onClick={addNote} 
+      >
          + Add 
-
+      </button>
+      <button className='btn btn-primary show-btn' >
+        <Link to="/show" className='link'>
+          Show Notes
+        </Link>
       </button>
     </div>
 
